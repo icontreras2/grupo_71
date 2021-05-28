@@ -9,7 +9,7 @@
   
 
   #Se construye la consulta como un string
- 	$query = "SELECT Tiendas.id, Tiendas.nombre, Comunas.nombre FROM Tiendas, Comunas, TiendasComunasCobertura WHERE Tiendas.id = TiendasComunasCobertura.id_tienda AND Comunas.id = TiendasComunasCobertura.id_comuna ORDER BY Tiendas.id;";
+ 	$query = "SELECT DISTINCT Tiendas.id, Tiendas.nombre, Comunas.nombre FROM Tiendas, Comunas, TiendasComunasCobertura WHERE Tiendas.id = TiendasComunasCobertura.id_tienda AND Comunas.id = TiendasComunasCobertura.id_comuna ORDER BY Tiendas.id;";
 
   #Se prepara y ejecuta la consulta. Se obtienen TODOS los resultados
 	$result = $db -> prepare($query);
