@@ -5,26 +5,26 @@
   <?php
   require("../config/conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
 
-  $var = $_POST["tipo"];
-  $query = "SELECT * FROM pokemones WHERE tipo='$var';";
-  $result = $db -> prepare($query);
-  $result -> execute();
-  $dataCollected = $result -> fetchAll(); #Obtiene todos los resultados de la consulta en forma de un arreglo
+  $descrip = $_POST["descripcion_ingresada"];
+
+ 	$query = "SELECT DISTINCT Usuarios.id, Usuarios.nombre, Usuarios.rut, Usuarios.edad, Usuarios.sexo FROM Compras, ComprasPorProducto, Usuarios, Productos WHERE ComprasPorProducto.id_producto = Productos.id AND ComprasPorProducto.id_compra = Compras.id AND Compras.id_usuario = Usuarios.id AND Productos.descripcion = '$descrip';";
+	$result = $db -> prepare($query);
+	$result -> execute();
+	$usuarios = $result -> fetchAll();
   ?>
 
-  <table>
+	<table>
     <tr>
       <th>ID</th>
       <th>Nombre</th>
-      <th>Altura</th>
-      <th>Peso</th>
-      <th>Exp Base</th>
-      <th>Tipo</th>
+      <th>RUT</th>
+      <th>edad</th>
+      <th>sexo</th>
     </tr>
   <?php
-  foreach ($dataCollected as $p) {
-    echo "<tr> <td>$p[0]</td> <td>$p[1]</td> <td>$p[2]</td> <td>$p[3]</td> <td>$p[4]</td> <td>$p[5]</td> </tr>";
-  }
+	foreach ($usuarios as $usuario) {
+  		echo "<tr><td>$usuario[0]</td><td>$usuario[1]</td><td>$usuario[2]</td><td>$usuario[3]</td><td>$usuario[4]</td></tr>";
+	}
   ?>
   </table>
 
