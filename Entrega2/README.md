@@ -175,27 +175,26 @@ CREATE TABLE productoscomestiblesfrescos(id INT PRIMARY KEY, duracion_sin_refrig
 #e = ProductosComestibles
 
 #si marca a:
-#SELECT Tiendas.nombre, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosNoComestibles WHERE Productos.id =  ProductosNoComestibles.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda;
+#SELECT Tiendas.id, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosNoComestibles WHERE Productos.id =  ProductosNoComestibles.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda;
 
 #si marca b:
-#SELECT Tiendas.nombre, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesEnConservas WHERE Productos.id =  ProductosComestiblesEnConservas.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda;
+#SELECT Tiendas.id, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesEnConservas WHERE Productos.id =  ProductosComestiblesEnConservas.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda;
 
 #si marca c:
-#SELECT Tiendas.nombre, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesCongelados WHERE Productos.id =  ProductosComestiblesCongelados.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda;
+#SELECT Tiendas.id, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesCongelados WHERE Productos.id =  ProductosComestiblesCongelados.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda;
 
 #si marca d:
-#SELECT Tiendas.nombre, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesFrescos WHERE Productos.id =  ProductosComestiblesFrescos.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda;
+#SELECT Tiendas.id, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesFrescos WHERE Productos.id =  ProductosComestiblesFrescos.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda;
 
 #si marca e:
 #es la unión de las consultas b, c y d
-#(SELECT DISTINCT Tiendas.nombre, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesEnConservas WHERE Productos.id =  ProductosComestiblesEnConservas.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda) UNION (SELECT DISTINCT Tiendas.nombre, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesCongelados WHERE Productos.id =  ProductosComestiblesCongelados.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda) UNION (SELECT DISTINCT Tiendas.nombre, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesFrescos WHERE Productos.id =  ProductosComestiblesFrescos.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda);
+#(SELECT DISTINCT Tiendas.id, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesEnConservas WHERE Productos.id =  ProductosComestiblesEnConservas.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda) UNION (SELECT DISTINCT Tiendas.id, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesCongelados WHERE Productos.id =  ProductosComestiblesCongelados.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda) UNION (SELECT DISTINCT Tiendas.id, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM Tiendas, PerteneceA, Productos, ProductosComestiblesFrescos WHERE Productos.id =  ProductosComestiblesFrescos.id AND Productos.id = PerteneceA.id_producto AND Tiendas.id = PerteneceA.id_tienda);
 
 
 #4) Ingrese una descripción. Muestre todos los usuarios que compraron el producto con esa descripción.
 #descripcion = input(str)
  #Usuarios(id, nombre, rut, edad, sexo)
 # SELECT DISTINCT Usuarios.id, Usuarios.nombre, Usuarios.rut, Usuarios.edad, Usuarios.sexo FROM Compras, ComprasPorProducto, Usuarios, Productos WHERE ComprasPorProducto.id_producto = Productos.id AND ComprasPorProducto.id_compra = Compras.id AND Compras.id_usuario = Usuarios.id AND Productos.descripcion = {descripcion};
-
 
 
 #5) Ingrese el nombre de una comuna. Muestre la edad promedio de los trabajadores de tiendas en esa comuna.
