@@ -218,6 +218,9 @@ CREATE TABLE productoscomestiblesfrescos(id INT PRIMARY KEY, duracion_sin_refrig
 #consulta final
 #SELECT DISTINCT Tiendas.id, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM ComprasPorProducto, Compras, Tiendas, ProductosNoComestibles, Productos WHERE Compras.id = ComprasPorProducto.id_compra AND Compras.id_tienda = Tiendas.id AND Productos.id = ProductosNoComestibles.id AND cantidad_de_productos_vendidos_del_tipo_seleccionado = (SELECT MAX(A.cantidad_de_productos_vendidos_del_tipo_seleccionado) FROM (SELECT Tiendas.id AS id_tienda, Tiendas.nombre AS nombre_tienda, SUM(ComprasPorProducto.cantidad) AS cantidad_de_productos_vendidos_del_tipo_seleccionado FROM ComprasPorProducto, Compras, Tiendas, ProductosNoComestibles, Productos WHERE Compras.id = ComprasPorProducto.id_compra AND Compras.id_tienda = Tiendas.id AND Productos.id = ProductosNoComestibles.id GROUP BY Tiendas.id) AS A);
 
+#finalisima
+SELECT DISTINCT Tiendas.id, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe, SUM(ComprasPorProducto.cantidad) AS resultado_suma FROM ComprasPorProducto, Compras, Tiendas, ProductosNoComestibles, Productos, (SELECT MAX(A.cantidad_de_productos_vendidos_del_tipo_seleccionado) AS valormaximo FROM (SELECT Tiendas.id AS id_tienda, Tiendas.nombre AS nombre_tienda, SUM(ComprasPorProducto.cantidad) AS cantidad_de_productos_vendidos_del_tipo_seleccionado FROM ComprasPorProducto, Compras, Tiendas, ProductosNoComestibles, Productos WHERE Compras.id = ComprasPorProducto.id_compra AND Compras.id_tienda = Tiendas.id AND Productos.id = ProductosNoComestibles.id GROUP BY Tiendas.id) AS A) AS max WHERE Compras.id = ComprasPorProducto.id_compra AND Compras.id_tienda = Tiendas.id AND Productos.id = ProductosNoComestibles.id AND resultado_suma = max.valormaximo;
+
 
 #si marca b:
 #tabla_tiendas_cantidad_productos_vendidos

@@ -12,7 +12,7 @@
   #CONSULTA 1
   ?>
 
-  <h3 align="center"> Obtener nombre de todas las tiendas, junto con los nombres de las comunas a las cuales despacha.</h3>
+  <h3 align="center"> 1. Obtener nombre de todas las tiendas, junto con los nombres de las comunas a las cuales despacha.</h3>
 
   <form align="center" action="consultas/consulta_1.php" method="post">
     
@@ -28,7 +28,7 @@
   #CONSULTA 2
   ?>
 
-  <h3 align="center"> Obtener todos los jefes de tiendas en una comuna determinada.</h3>
+  <h3 align="center"> 2. Obtener todos los jefes de tiendas en una comuna determinada.</h3>
 
   <form align="center" action="consultas/consulta_2.php" method="post">
     Comuna:
@@ -45,7 +45,7 @@
   #CONSULTA 3
   ?>
 
-  <h3 align="center"> Obtener todas las tiendas que vendan al menos un producto del tipo seleccionado </h3>
+  <h3 align="center"> 3. Obtener todas las tiendas que vendan al menos un producto del tipo seleccionado </h3>
 
   <form align="center" action="consultas/consulta_3.php" method="post">
     Selecciona tipo: 
@@ -72,7 +72,7 @@
   #CONSULTA 4
   ?>
 
-  <h3 align="center"> Obtener usuarios que hayan comprado un producto con una determinada descripción.</h3>
+  <h3 align="center"> 4. Obtener usuarios que hayan comprado un producto con una determinada descripción.</h3>
 
   <form align="center" action="consultas/consulta_4.php" method="post">
     Descripción:
@@ -88,7 +88,7 @@
   #CONSULTA 5
   ?>
 
-  <h3 align="center"> Obtener edad promedio de trabajadores en un comuna determinada.</h3>
+  <h3 align="center"> 5. Obtener edad promedio de trabajadores en un comuna determinada.</h3>
 
   <form align="center" action="consultas/consulta_5.php" method="post">
     Comuna:
@@ -106,7 +106,7 @@
   #CONSULTA 6 AGREGAR LASOPCIONES SELECCIONABLES
   ?>
 
-  <h3 align="center"> Obtener las tiendas que han registrado la venta de la mayor cantidad de productos del tipo seleccionado.</h3>
+  <h3 align="center"> 6. Obtener las tiendas que han registrado la venta de la mayor cantidad de productos del tipo seleccionado.</h3>
 
   <form align="center" action="consultas/consulta_6.php" method="post">
     Selecciona tipo: 
