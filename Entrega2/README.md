@@ -157,10 +157,10 @@ CREATE TABLE productoscomestiblesfrescos(id INT PRIMARY KEY, duracion_sin_refrig
 \COPY productoscomestiblesfrescos FROM Entrega2/csv/ProductosComestiblesFrescos.csv DELIMITER ',';
 
 
-#CONSULTAS SQL
+# CONSULTAS SQL
 
 #1)  Muestre nombre de todas las tiendas, junto con los nombres de las comunas a cuales realizan despachos.
-#SELECT Tiendas.nombre, Comunas.nombre FROM Tiendas, Comunas, TiendasComunasCobertura WHERE Tiendas.id = TiendasComunasCobertura.id_tienda AND Comunas.id = TiendasComunasCobertura.id_comuna;
+# SELECT Tiendas.id, Tiendas.nombre, Comunas.nombre FROM Tiendas, Comunas, TiendasComunasCobertura WHERE Tiendas.id = TiendasComunasCobertura.id_tienda AND Comunas.id = TiendasComunasCobertura.id_comuna ORDER BY Tiendas.id;
 
 #2) Ingrese una comuna. Muestre todos los jefes de tiendas ubicadas en dicha comuna
 #nombre_comuna_ingresado = input(str)
