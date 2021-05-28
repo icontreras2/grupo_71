@@ -164,7 +164,7 @@ CREATE TABLE productoscomestiblesfrescos(id INT PRIMARY KEY, duracion_sin_refrig
 
 #2) Ingrese una comuna. Muestre todos los jefes de tiendas ubicadas en dicha comuna
 #nombre_comuna_ingresado = input(str)
-# SELECT Trabajadores.id, Trabajadores.nombre, Trabajadores.rut, Trabajadores.edad, Trabajadores.sexo FROM Trabajadores, Tiendas, Direcciones, TiendasTrabajadores, Comunas WHERE TiendasTrabajadores.id_tienda = Tiendas.id AND Tiendas.id_jefe = TiendasTrabajadores.id_trabajador AND Tiendas.id_direccion = Direcciones.id AND Direcciones.id_comuna = Comunas.id AND Comunas.nombre = {nombre_comuna_ingresado};
+# SELECT DISTINCT Trabajadores.id, Trabajadores.nombre, Trabajadores.rut, Trabajadores.edad, Trabajadores.sexo FROM Trabajadores, Tiendas, Direcciones, TiendasTrabajadores, Comunas WHERE TiendasTrabajadores.id_tienda = Tiendas.id AND Tiendas.id_jefe = TiendasTrabajadores.id_trabajador AND Tiendas.id_direccion = Direcciones.id AND Direcciones.id_comuna = Comunas.id AND Comunas.nombre = {nombre_comuna_ingresado};
 
 #3) Seleccione un tipo de producto. Muestre todas las tiendas que venden al menos un producto de dicha categoría.
 #Hay que dar las siguientes opciones para elegir:

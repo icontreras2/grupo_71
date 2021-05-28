@@ -7,7 +7,7 @@
 
   $comuna = $_POST["comuna_elegida"];
 
- 	$query = "SELECT Trabajadores.id, Trabajadores.nombre, Trabajadores.rut, Trabajadores.edad, Trabajadores.sexo FROM Trabajadores, Tiendas, Direcciones, TiendasTrabajadores, Comunas WHERE TiendasTrabajadores.id_tienda = Tiendas.id AND Tiendas.id_jefe = TiendasTrabajadores.id_trabajador AND Tiendas.id_direccion = Direcciones.id AND Direcciones.id_comuna = Comunas.id AND Comunas.nombre = '$comuna';";
+ 	$query = "SELECT DISTINCT Trabajadores.id, Trabajadores.nombre, Trabajadores.rut, Trabajadores.edad, Trabajadores.sexo FROM Trabajadores, Tiendas, Direcciones, TiendasTrabajadores, Comunas WHERE TiendasTrabajadores.id_tienda = Tiendas.id AND Tiendas.id_jefe = TiendasTrabajadores.id_trabajador AND Tiendas.id_direccion = Direcciones.id AND Direcciones.id_comuna = Comunas.id AND Comunas.nombre = '$comuna';";
 	$result = $db -> prepare($query);
 	$result -> execute();
 	$jefes = $result -> fetchAll();
