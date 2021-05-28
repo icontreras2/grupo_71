@@ -164,7 +164,7 @@ CREATE TABLE productoscomestiblesfrescos(id INT PRIMARY KEY, duracion_sin_refrig
 
 #2) Ingrese una comuna. Muestre todos los jefes de tiendas ubicadas en dicha comuna
 #nombre_comuna_ingresado = input(str)
-#SELECT Trabajadores.id, Trabajadores.nombre, Trabajadores.rut, Trabajadores.edad, Trabajadores.sexo, Trabajadores.id_tienda FROM Trabajadores, Tiendas, Direcciones, Comunas WHERE Trabajadores.id_tienda = Tiendas.id AND Tiendas.id_jefe = Trabajadores.id AND Tiendas.id_direccion = Direcciones.id AND Direcciones.id_comuna = Comunas.id AND Comunas.nombre = {nombre_comuna_ingresado};
+# SELECT Trabajadores.id, Trabajadores.nombre, Trabajadores.rut, Trabajadores.edad, Trabajadores.sexo FROM Trabajadores, Tiendas, Direcciones, TiendasTrabajadores, Comunas WHERE TiendasTrabajadores.id_tienda = Tiendas.id AND Tiendas.id_jefe = TiendasTrabajadores.id_trabajador AND Tiendas.id_direccion = Direcciones.id AND Direcciones.id_comuna = Comunas.id AND Comunas.nombre = {nombre_comuna_ingresado};
 
 #3) Seleccione un tipo de producto. Muestre todas las tiendas que venden al menos un producto de dicha categoría.
 #Hay que dar las siguientes opciones para elegir:
@@ -194,12 +194,13 @@ CREATE TABLE productoscomestiblesfrescos(id INT PRIMARY KEY, duracion_sin_refrig
 #4) Ingrese una descripción. Muestre todos los usuarios que compraron el producto con esa descripción.
 #descripcion = input(str)
  #Usuarios(id, nombre, rut, edad, sexo)
-#SELECT DISTINCT Usuarios.id, Usuarios.nombre, Usuarios.rut, Usuarios.edad, Usuarios.sexo FROM Compras, ComprasPorProducto, Usuarios, Productos WHERE ComprasPorProducto.id_producto = Productos.id AND ComprasPorProducto.id_compra = Compras.id AND Compras.id_usuario = Usuarios.id AND Producto.descripcion = {descripcion};
+# SELECT DISTINCT Usuarios.id, Usuarios.nombre, Usuarios.rut, Usuarios.edad, Usuarios.sexo FROM Compras, ComprasPorProducto, Usuarios, Productos WHERE ComprasPorProducto.id_producto = Productos.id AND ComprasPorProducto.id_compra = Compras.id AND Compras.id_usuario = Usuarios.id AND Productos.descripcion = {descripcion};
+
+
 
 #5) Ingrese el nombre de una comuna. Muestre la edad promedio de los trabajadores de tiendas en esa comuna.
 #nombre_comuna_ingresado = input(str)
-#SELECT AVG(Trabajadores.edad) FROM Trabajadores, Tiendas, Direcciones, Comunas WHERE Trabajadores.id_tienda = Tiendas.id AND Tiendas.id_direccion = Direcciones.id AND Direcciones.id_comuna = Comunas.id AND Comunas.nombre = {nombre_comuna_ingresado} GROUP BY Comunas.nombre;
-
+# SELECT AVG(Trabajadores.edad) FROM Trabajadores, TiendasTrabajadores, Tiendas, Direcciones, Comunas WHERE TiendasTrabajadores.id_tienda = Tiendas.id AND Tiendas.id_direccion = Direcciones.id AND Direcciones.id_comuna = Comunas.id AND TiendasTrabajadores.id_trabajador = Trabajadores.id AND Comunas.nombre = '{nombre_comuna_ingresado}' GROUP BY Comunas.nombre;
 
 #6) Seleccione un tipo de producto. Muestre las tiendas que han registrado la venta de la mayor cantidad de productos del tipo seleccionado.
 #Hay que dar las siguientes opciones para elegir:
