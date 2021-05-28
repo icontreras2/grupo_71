@@ -12,7 +12,7 @@
   #CONSULTA 1
   ?>
 
-  <h3 align="center"> Obtener nombre de todas las tiendas, junto con los nombres de las comunas a las cuales despacho.</h3>
+  <h3 align="center"> Obtener nombre de todas las tiendas, junto con los nombres de las comunas a las cuales despacha.</h3>
 
   <form align="center" action="consultas/consulta_1.php" method="post">
     
