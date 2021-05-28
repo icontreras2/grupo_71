@@ -83,6 +83,17 @@ CREATE TABLE comprasporproducto(id_compra INT, id_producto INT, cantidad INT, PR
 \COPY comprasporproducto FROM Entrega2/csv/ComprasPorProducto.csv DELIMITER ',';
 
 
+#### 9) TIENDASTRABAJADORES ####
+# SQL #
+CREATE TABLE tiendastrabajadores(id_tienda INT, id_trabajador INT, PRIMARY KEY(id_tienda, id_trabajador), FOREIGN KEY(id_tienda) REFERENCES tiendas(id) ON DELETE CASCADE, FOREIGN KEY(id_trabajador) REFERENCES trabajadores(id) ON DELETE CASCADE);
+# FOREIGN KEY #
+* id_tienda --> ON DELETE CASCADE. JUSTIFICACIÓN: 
+* id_trabajador --> ON DELETE CASCADE. JUSTIFICACIÓN: 
+# POBLAR TABLA DESDE CSV #
+\COPY tiendastrabajadores FROM Entrega2/csv/TiendasTrabajadores.csv DELIMITER ',';
+
+
+
 
 
 
