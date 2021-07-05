@@ -164,7 +164,7 @@ CREATE TABLE productoscomestiblesfrescos(id INT PRIMARY KEY, duracion_sin_refrig
 
 #2) Ingrese una comuna. Muestre todos los jefes de tiendas ubicadas en dicha comuna
 #nombre_comuna_ingresado = input(str)
-# SELECT Trabajadores.id, Trabajadores.nombre, Trabajadores.rut, Trabajadores.edad, Trabajadores.sexo FROM Trabajadores, Tiendas, Direcciones, TiendasTrabajadores, Comunas WHERE TiendasTrabajadores.id_tienda = Tiendas.id AND Tiendas.id_jefe = TiendasTrabajadores.id_trabajador AND Tiendas.id_direccion = Direcciones.id AND Direcciones.id_comuna = Comunas.id AND Comunas.nombre = {nombre_comuna_ingresado};
+# SELECT DISTINCT Trabajadores.id, Trabajadores.nombre, Trabajadores.rut, Trabajadores.edad, Trabajadores.sexo FROM Trabajadores, Tiendas, Direcciones, TiendasTrabajadores, Comunas WHERE TiendasTrabajadores.id_tienda = Tiendas.id AND Tiendas.id_jefe = TiendasTrabajadores.id_trabajador AND Tiendas.id_direccion = Direcciones.id AND Direcciones.id_comuna = Comunas.id AND Comunas.nombre = {nombre_comuna_ingresado};
 
 #3) Seleccione un tipo de producto. Muestre todas las tiendas que venden al menos un producto de dicha categoría.
 #Hay que dar las siguientes opciones para elegir:
@@ -225,6 +225,9 @@ SUM(ComprasPorProducto.cantidad) AS cantidad_de_productos_vendidos_del_tipo_sele
 #SELECT MAX(A.cantidad_de_productos_vendidos_del_tipo_seleccionado) FROM (SELECT Tiendas.id AS id_tienda, Tiendas.nombre AS nombre_tienda, SUM(ComprasPorProducto.cantidad) AS cantidad_de_productos_vendidos_del_tipo_seleccionado FROM ComprasPorProducto, Compras, Tiendas, ProductosNoComestibles, Productos WHERE Compras.id = ComprasPorProducto.id_compra AND Compras.id_tienda = Tiendas.id AND Productos.id = ProductosNoComestibles.id GROUP BY Tiendas.id) AS A;
 #consulta final
 #SELECT DISTINCT Tiendas.id, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe FROM ComprasPorProducto, Compras, Tiendas, ProductosNoComestibles, Productos WHERE Compras.id = ComprasPorProducto.id_compra AND Compras.id_tienda = Tiendas.id AND Productos.id = ProductosNoComestibles.id AND cantidad_de_productos_vendidos_del_tipo_seleccionado = (SELECT MAX(A.cantidad_de_productos_vendidos_del_tipo_seleccionado) FROM (SELECT Tiendas.id AS id_tienda, Tiendas.nombre AS nombre_tienda, SUM(ComprasPorProducto.cantidad) AS cantidad_de_productos_vendidos_del_tipo_seleccionado FROM ComprasPorProducto, Compras, Tiendas, ProductosNoComestibles, Productos WHERE Compras.id = ComprasPorProducto.id_compra AND Compras.id_tienda = Tiendas.id AND Productos.id = ProductosNoComestibles.id GROUP BY Tiendas.id) AS A);
+
+#finalisima
+SELECT DISTINCT Tiendas.id, Tiendas.nombre, Tiendas.id_direccion, Tiendas.id_jefe, SUM(ComprasPorProducto.cantidad) AS resultado_suma FROM ComprasPorProducto, Compras, Tiendas, ProductosNoComestibles, Productos, (SELECT MAX(A.cantidad_de_productos_vendidos_del_tipo_seleccionado) AS valormaximo FROM (SELECT Tiendas.id AS id_tienda, Tiendas.nombre AS nombre_tienda, SUM(ComprasPorProducto.cantidad) AS cantidad_de_productos_vendidos_del_tipo_seleccionado FROM ComprasPorProducto, Compras, Tiendas, ProductosNoComestibles, Productos WHERE Compras.id = ComprasPorProducto.id_compra AND Compras.id_tienda = Tiendas.id AND Productos.id = ProductosNoComestibles.id GROUP BY Tiendas.id) AS A) AS max WHERE Compras.id = ComprasPorProducto.id_compra AND Compras.id_tienda = Tiendas.id AND Productos.id = ProductosNoComestibles.id AND resultado_suma = max.valormaximo;
 
 
 #si marca b:

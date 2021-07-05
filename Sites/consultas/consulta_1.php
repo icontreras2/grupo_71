@@ -6,28 +6,27 @@
   require("../config/conexion.php");
 
   #Se obtiene el valor del input del usuario
-  $altura = $_POST["altura"];
-  $altura = intval($altura);
+  
 
   #Se construye la consulta como un string
- 	$query = "SELECT pid, nombre, altura FROM pokemones where altura>=$altura order by altura desc;";
+ 	$query = "SELECT DISTINCT Tiendas.id, Tiendas.nombre, Comunas.nombre FROM Tiendas, Comunas, TiendasComunasCobertura WHERE Tiendas.id = TiendasComunasCobertura.id_tienda AND Comunas.id = TiendasComunasCobertura.id_comuna ORDER BY Tiendas.id;";
 
   #Se prepara y ejecuta la consulta. Se obtienen TODOS los resultados
 	$result = $db -> prepare($query);
 	$result -> execute();
-	$pokemones = $result -> fetchAll();
+	$tiendas = $result -> fetchAll();
   ?>
 
   <table>
     <tr>
       <th>ID</th>
       <th>Nombre</th>
-      <th>Altura</th>
+      <th>Comuna</th>
     </tr>
   
       <?php
         // echo $pokemones;
-        foreach ($pokemones as $p) {
+        foreach ($tiendas as $p) {
           echo "<tr><td>$p[0]</td><td>$p[1]</td><td>$p[2]</td></tr>";
       }
       ?>

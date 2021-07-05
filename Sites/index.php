@@ -1,79 +1,133 @@
 <?php include('templates/header.html');   ?>
 
 <body>
-  <h1 align="center">Biblioteca Pokemón </h1>
-  <p style="text-align:center;">Aquí podrás encontrar información sobre pokemones.</p>
+  <h1 align="center"> Super entrega 2 con todo el flow </h1>
+  <p style="text-align:center;">Aquí podrás consultar información sobre tú negocio.</p>
 
   <br>
 
-  <h3 align="center"> ¿Quieres buscar un Pokemón por tipo y/o nombre?</h3>
 
-  <form align="center" action="consultas/consulta_tipo_nombre.php" method="post">
-    Tipo:
-    <input type="text" name="tipo_elegido">
-    <br/>
-    Nombre:
-    <input type="text" name="nombre_pokemon">
-    <br/><br/>
-    <input type="submit" value="Buscar">
-  </form>
-  
-  <br>
-  <br>
-  <br>
-
-  <h3 align="center"> ¿Quieres buscar un Pokemón por su ID?</h3>
-
-  <form align="center" action="consultas/consulta_stats.php" method="post">
-    Id:
-    <input type="text" name="id_elegido">
-    <br/><br/>
-    <input type="submit" value="Buscar">
-  </form>
-  
-  <br>
-  <br>
-  <br>
-
-  <h3 align="center"> ¿Quieres conocer los Pokemones más altos que: ?</h3>
-
-  <form align="center" action="consultas/consulta_altura.php" method="post">
-    Altura Mínima:
-    <input type="text" name="altura">
-    <br/><br/>
-    <input type="submit" value="Buscar">
-  </form>
-  <br>
-  <br>
-  <br>
-
-  <h3 align="center">¿Quieres buscar todos los pokemones por tipo?</h3>
 
   <?php
-  #Primero obtenemos todos los tipos de pokemones
-  require("config/conexion.php");
-  $result = $db -> prepare("SELECT DISTINCT tipo FROM pokemones;");
-  $result -> execute();
-  $dataCollected = $result -> fetchAll();
+  #CONSULTA 1
   ?>
 
-  <form align="center" action="consultas/consulta_tipo.php" method="post">
-    Seleccinar un tipo:
+  <h3 align="center"> 1. Obtener nombre de todas las tiendas, junto con los nombres de las comunas a las cuales despacha.</h3>
+
+  <form align="center" action="consultas/consulta_1.php" method="post">
+    
+    <br/><br/>
+    <input type="submit" value="Obtener">
+  </form>
+  
+  <br>
+  <br>
+  <br>
+
+  <?php
+  #CONSULTA 2
+  ?>
+
+  <h3 align="center"> 2. Obtener todos los jefes de tiendas en una comuna determinada.</h3>
+
+  <form align="center" action="consultas/consulta_2.php" method="post">
+    Comuna:
+    <input type="text" name="comuna_elegida">
+    <br/><br/>
+    <input type="submit" value="Obtener">
+  </form>
+  
+  <br>
+  <br>
+  <br>
+
+  <?php
+  #CONSULTA 3
+  ?>
+
+  <h3 align="center"> 3. Obtener todas las tiendas que vendan al menos un producto del tipo seleccionado </h3>
+
+  <form align="center" action="consultas/consulta_3.php" method="post">
+    Selecciona tipo: 
+
     <select name="tipo">
-      <?php
-      #Para cada tipo agregamos el tag <option value=value_of_param> visible_value </option>
-      foreach ($dataCollected as $d) {
-        echo "<option value=$d[0]>$d[0]</option>";
-      }
-      ?>
+         <option value="ProductoNoComestible">ProductoNoComestible</option>
+         <option value="ProductoComestible">ProductoComestible</option>
+         <option value="ProductoComestibleCongelado">ProductoComestibleCongelado</option>
+         <option value="ProductoComestibleFresco">ProductoComestibleFresco</option>
+         <option value="ProductoComestibleEnConserva">ProductoComestibleEnConserva</option>
     </select>
-    <br><br>
-    <input type="submit" value="Buscar por tipo">
+
+    <br/><br/>
+    <input type="submit" value="Obtener">
+
   </form>
 
   <br>
   <br>
   <br>
+
+
+  <?php
+  #CONSULTA 4
+  ?>
+
+  <h3 align="center"> 4. Obtener usuarios que hayan comprado un producto con una determinada descripción.</h3>
+
+  <form align="center" action="consultas/consulta_4.php" method="post">
+    Descripción:
+    <input type="text" name="descripcion_ingresada">
+    <br/><br/>
+    <input type="submit" value="Obtener">
+  </form>
   <br>
+  <br>
+  <br>
+
+  <?php
+  #CONSULTA 5
+  ?>
+
+  <h3 align="center"> 5. Obtener edad promedio de trabajadores en un comuna determinada.</h3>
+
+  <form align="center" action="consultas/consulta_5.php" method="post">
+    Comuna:
+    <input type="text" name="comuna_elegida">
+    <br/><br/>
+    <input type="submit" value="Obtener">
+  </form>
+
+  <br>
+  <br>
+  <br>
+
+
+  <?php
+  #CONSULTA 6 AGREGAR LASOPCIONES SELECCIONABLES
+  ?>
+
+  <h3 align="center"> 6. Obtener las tiendas que han registrado la venta de la mayor cantidad de productos del tipo seleccionado.</h3>
+
+  <form align="center" action="consultas/consulta_6.php" method="post">
+    Selecciona tipo: 
+
+    <select name="tipo">
+         <option value="ProductoNoComestible">ProductoNoComestible</option>
+         <option value="ProductoComestible">ProductoComestible</option>
+         <option value="ProductoComestibleCongelado">ProductoComestibleCongelado</option>
+         <option value="ProductoComestibleFresco">ProductoComestibleFresco</option>
+         <option value="ProductoComestibleEnConserva">ProductoComestibleEnConserva</option>
+    </select>
+
+    <br/><br/>
+    <input type="submit" value="Obtener">
+
+  </form>
+
+  <br>
+  <br>
+  <br>
+
+
 </body>
 </html>
