@@ -7,8 +7,9 @@
 
   $descrip = $_POST["descripcion_ingresada"];
 
- 	$query = "SELECT DISTINCT Usuarios.id, Usuarios.nombre, Usuarios.rut, Usuarios.edad, Usuarios.sexo FROM Compras, ComprasPorProducto, Usuarios, Productos WHERE ComprasPorProducto.id_producto = Productos.id AND ComprasPorProducto.id_compra = Compras.id AND Compras.id_usuario = Usuarios.id AND Productos.descripcion = '$descrip';";
-	$result = $db -> prepare($query);
+ 	$query = "SELECT DISTINCT Usuarios.id, Usuarios.nombre, Usuarios.rut, Usuarios.edad, Usuarios.sexo FROM Compras, ComprasPorProducto, Usuarios, Productos WHERE ComprasPorProducto.id_producto = Productos.id AND ComprasPorProducto.id_compra = Compras.id AND Compras.id_usuario = Usuarios.id AND Productos.descripcion LIKE '%$descrip%';";
+   
+  $result = $db -> prepare($query);
 	$result -> execute();
 	$usuarios = $result -> fetchAll();
   ?>
