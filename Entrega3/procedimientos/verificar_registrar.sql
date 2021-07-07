@@ -22,7 +22,7 @@ BEGIN
         MAX(id)
         FROM usuarios;
 
-        insert into usuarios values(id_max + 1, nombre, rut, edad, sexo, contraseña)
+        insert into usuarios values(id_max + 1, nombre, rut, edad, sexo, contraseña);
         RETURNS TRUE;
 
     END IF;
