@@ -14,8 +14,10 @@ BEGIN
     -- control de flujo
     IF rut NOT IN (SELECT rut FROM usuarios) THEN
         RETURN FALSE;
+
+    END IF;
     
-    ELSE IF contraseña NOT IN (SELECT contraseña FROM usuarios WHERE usuarios.rut = rut) THEN
+    IF contraseña NOT IN (SELECT contraseña FROM usuarios WHERE usuarios.rut = rut) THEN
         RETURN FALSE;
     
     ELSE
