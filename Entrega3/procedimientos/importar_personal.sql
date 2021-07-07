@@ -16,7 +16,7 @@ BEGIN
     -- control de flujo
 
     IF 'contraseña' NOT IN (SELECT column_name FROM information_schema.columns WHERE table_name='usuarios') THEN
-        ALTER TABLE usuarios ADD contraseña;
+        ALTER TABLE usuarios ADD contraseña varchar(20);
 
 
     IF rut IN (SELECT rut FROM usuarios;) THEN
