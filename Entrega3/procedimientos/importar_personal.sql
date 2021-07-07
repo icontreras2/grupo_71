@@ -1,7 +1,7 @@
 CREATE OR REPLACE FUNCTION
 
 -- declaramos la función y sus argumentos
-importar_personal (nombre varchar(100), rut varchar(20), edad int, sexo varchar(10), contraseña varchar(20), id_direccion int)
+importar_personal (nombre varchar(50), rut varchar(20), edad int, sexo varchar(10), contraseña varchar(20), id_direccion int)
 
 -- declaramos lo que retorna 
 RETURNS BOOLEAN AS $$
@@ -18,7 +18,7 @@ BEGIN
     IF 'contraseña' NOT IN (SELECT column_name FROM information_schema.columns WHERE table_name='usuarios') THEN
         ALTER TABLE usuarios ADD contraseña varchar(20);
         UPDATE usuarios SET contraseña = 'contraseña';
-        
+
     END IF;
 
     IF rut IN (SELECT rut FROM usuarios) THEN
@@ -30,7 +30,7 @@ BEGIN
         FROM usuarios;
 
         insert into usuarios values(id_max_usuario + 1, nombre, rut, edad, sexo, contraseña);
-        insert into direccionesusuario values(id_max_usuario + 1, id_direccion);
+        insert into direccionesusuarios values(id_max_usuario + 1, id_direccion);
 
         RETURN TRUE;
 
