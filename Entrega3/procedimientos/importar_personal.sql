@@ -20,7 +20,7 @@ BEGIN
 
 
     IF rut IN (SELECT rut FROM usuarios) THEN
-        RETURNS FALSE;
+        RETURN FALSE;
     
     ELSE
         SELECT INTO id_max_usuario
@@ -30,7 +30,7 @@ BEGIN
         insert into usuarios values(id_max_usuario + 1, nombre, rut, edad, sexo, contraseña);
         insert into direccionesusuario values(id_max_usuario + 1, id_direccion);
 
-        RETURNS TRUE;
+        RETURN TRUE;
 
     END IF;
 

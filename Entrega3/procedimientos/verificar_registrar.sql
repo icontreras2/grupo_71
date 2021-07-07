@@ -15,7 +15,7 @@ BEGIN
 
     -- control de flujo
     IF rut IN (SELECT rut FROM usuarios) THEN
-        RETURNS FALSE;
+        RETURN FALSE;
     
     ELSE
         SELECT INTO id_max
@@ -23,7 +23,7 @@ BEGIN
         FROM usuarios;
 
         insert into usuarios values(id_max + 1, nombre, rut, edad, sexo, contraseña);
-        RETURNS TRUE;
+        RETURN TRUE;
 
     END IF;
 
