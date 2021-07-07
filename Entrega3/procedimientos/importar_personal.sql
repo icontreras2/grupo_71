@@ -17,6 +17,8 @@ BEGIN
 
     IF 'contraseña' NOT IN (SELECT column_name FROM information_schema.columns WHERE table_name='usuarios') THEN
         ALTER TABLE usuarios ADD contraseña varchar(20);
+        UPDATE usuarios SET contraseña = 'contraseña';
+        
     END IF;
 
     IF rut IN (SELECT rut FROM usuarios) THEN
