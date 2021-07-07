@@ -17,7 +17,7 @@ BEGIN
 
     END IF;
     
-    IF contraseña NOT IN (SELECT contraseña FROM usuarios WHERE usuarios.rut = rut) THEN
+    IF contraseña NOT IN (SELECT usuarios.contraseña FROM usuarios WHERE usuarios.rut = rut) THEN
         RETURN FALSE;
     
     ELSE
