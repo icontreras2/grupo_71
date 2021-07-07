@@ -14,7 +14,7 @@ id_max int;
 BEGIN
 
     -- control de flujo
-    IF rut IN (SELECT rut FROM usuarios) THEN
+    IF rut IN (SELECT usuarios.rut FROM usuarios) THEN
         RETURN FALSE;
     
     ELSE
