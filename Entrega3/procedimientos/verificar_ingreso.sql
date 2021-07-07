@@ -1,7 +1,7 @@
 CREATE OR REPLACE FUNCTION
 
 -- declaramos la función y sus argumentos
-verificar_ingreso (rut varchar(20), contraseña varchar(20))
+verificar_ingreso (rut1 varchar(20), contraseña varchar(20))
 
 -- declaramos lo que retorna 
 RETURNS BOOLEAN AS $$
@@ -17,7 +17,7 @@ BEGIN
 
     END IF;
     
-    IF contraseña NOT IN (SELECT usuarios.contraseña FROM usuarios WHERE usuarios.rut = rut) THEN
+    IF contraseña NOT IN (SELECT usuarios.contraseña FROM usuarios WHERE usuarios.rut = rut1) THEN
         RETURN FALSE;
     
     ELSE
