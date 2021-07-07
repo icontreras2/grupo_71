@@ -16,12 +16,12 @@ BEGIN
     -- control de flujo
 
     IF 'contraseña' NOT IN (SELECT column_name FROM information_schema.columns WHERE table_name='usuarios') THEN
-        ALTER TABLE usuarios ADD contraseña varchar(20);
-        UPDATE usuarios SET contraseña = 'contraseña';
+        ALTER TABLE usuarios ADD COLUMN contraseña varchar(20);
+        UPDATE usuarios SET contraseña = 'clave';
 
     END IF;
 
-    IF rut IN (SELECT rut FROM usuarios) THEN
+    IF rut IN (SELECT usuarios.rut FROM usuarios) THEN
         RETURN FALSE;
     
     ELSE
@@ -29,8 +29,8 @@ BEGIN
         MAX(id)
         FROM usuarios;
 
-        insert into usuarios values(id_max_usuario + 1, nombre, rut, edad, sexo, contraseña);
-        insert into direccionesusuarios values(id_max_usuario + 1, id_direccion);
+        INSERT INTO usuarios values(id_max_usuario + 1, nombre, rut, edad, sexo, contraseña);
+        INSERT INTO direccionesusuarios values(id_max_usuario + 1, id_direccion);
 
         RETURN TRUE;
 
