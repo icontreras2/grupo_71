@@ -19,7 +19,7 @@ BEGIN
         ALTER TABLE usuarios ADD contraseña varchar(20);
 
 
-    IF rut IN (SELECT rut FROM usuarios;) THEN
+    IF rut IN (SELECT rut FROM usuarios) THEN
         RETURNS FALSE;
     
     ELSE
