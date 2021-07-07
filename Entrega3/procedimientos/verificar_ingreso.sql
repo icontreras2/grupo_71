@@ -12,7 +12,7 @@ RETURNS BOOLEAN AS $$
 BEGIN
 
     -- control de flujo
-    IF rut NOT IN (SELECT usuarios.rut FROM usuarios) THEN
+    IF rut1 NOT IN (SELECT usuarios.rut FROM usuarios) THEN
         RETURN FALSE;
 
     END IF;
