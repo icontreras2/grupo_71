@@ -9,7 +9,7 @@ RETURNS VARCHAR AS $$
 -- definimos nuestra función
 BEGIN
     -- control de flujo
-    IF id_producto IN (SELECT id FROM ProductosNoComestibles;) THEN
+    IF id_producto IN (SELECT id FROM ProductosNoComestibles) THEN
         RETURNS 'No comestible';
     
     ELSE
