@@ -10,10 +10,10 @@ RETURNS VARCHAR AS $$
 BEGIN
     -- control de flujo
     IF id_producto IN (SELECT id FROM ProductosNoComestibles) THEN
-        RETURNS 'No comestible';
+        RETURN 'No comestible';
     
     ELSE
-        RETURNS "Comestible";
+        RETURN "Comestible";
 
     END IF;
 
