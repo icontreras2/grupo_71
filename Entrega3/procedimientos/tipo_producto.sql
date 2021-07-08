@@ -13,7 +13,7 @@ BEGIN
         RETURN 'No comestible';
     
     ELSE
-        RETURN "Comestible";
+        RETURN 'Comestible';
 
     END IF;
 
