@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION
 tipo_producto (id_producto int)
 
 -- declaramos lo que retorna 
-RETURNS str AS $$
+RETURNS VARCHAR AS $$
 
 -- definimos nuestra función
 BEGIN
